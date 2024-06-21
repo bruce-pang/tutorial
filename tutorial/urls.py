@@ -16,11 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from quikstart import views
+from quikstart import views as quick_views
+from serializer_quik import views as serial_views
 
 urlpatterns = [
-    path('login/', views.LoginView.as_view()),
-    path('user/', views.UserView.as_view()),
-    path('order/', views.OrderView.as_view()),
+    # path('login/', views.LoginView.as_view()),
+    # path('user/', views.UserView.as_view()),
+    # path('order/', views.OrderView.as_view()),
+
+    path('api/<str:version>/depart/', serial_views.DepartView.as_view(), name='depart'),
+    path('api/<str:version>/user/', serial_views.UserView.as_view(), name='user'),
 
 ]
