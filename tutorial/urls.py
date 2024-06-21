@@ -19,14 +19,8 @@ from django.urls import path
 from quikstart import views
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    path('auth/', views.auth), # FBV: function based view -> 请求进来 函数()
-
-    # /user/123/ => pk=123
-    path('user/<int:pk>/', views.UserView.as_view()), # CBV: class based view -> 请求进来 函数()
-
-
-    # /info/xxxxx/ => dt=xxxxx
-    path('info/<str:dt>/', views.InfoView.as_view()), # CBV: class based view -> 请求进来 函数()
+    path('login/', views.LoginView.as_view()),
+    path('user/', views.UserView.as_view()),
+    path('order/', views.OrderView.as_view()),
 
 ]

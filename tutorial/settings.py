@@ -125,4 +125,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #DRF配置
 REST_FRAMEWORK = {
 'UNAUTHENTICATED_USER': None, # 匿名用户默认为None， 不配置这个，又注释掉了Django的认证系统，就会报错
+'DEFAULT_AUTHENTICATION_CLASSES': ['ext.auth.ParamAuthentication', ] # 全局认证类不能写在views.py中，会造成循环引用
 }

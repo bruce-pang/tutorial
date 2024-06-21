@@ -15,22 +15,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from quikstart import views
+from django.urls import path # django组件
+from quikstart import views # app组件，引入views.py，用于绑定对应的路由url
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('auth/', views.auth), # FBV: function based view -> 请求进来 函数()
 
     # /user/123/ => pk=123
-    path('user/<int:pk>/', views.UserView.as_view()), # CBV: class based view -> 请求进来 函数()
+    path('user/<int:pk>/<str:name>/', views.UserView.as_view()), # CBV: class based view -> 请求进来 函数()
+
+
+    path(r'^api/(?P<version>\w+)/users/$', views.UserView.as_view()), # CBV: class based view -> 请求进来 函数()
 
 
     # /info/xxxxx/ => dt=xxxxx
     path('info/<str:dt>/', views.InfoView.as_view()), # CBV: class based view -> 请求进来 函数()
 
-    path('login/', views.LoginView.as_view()),
-    path('user/', views.UserView.as_view()),
-    path('order/', views.OrderView.as_view()),
 
 ]
