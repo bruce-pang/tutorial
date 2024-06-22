@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "rest_framework", # template/static of RDF
     'serializer_quik.apps.SerializerQuikConfig', # app of serializer_quik
+    'quikstart.apps.QuikstartConfig', # app of quickstart
 ]
 
 MIDDLEWARE = [
@@ -126,5 +127,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #DRF配置
 REST_FRAMEWORK = {
 'UNAUTHENTICATED_USER': None, # 匿名用户默认为None， 不配置这个，又注释掉了Django的认证系统，就会报错
-'DEFAULT_AUTHENTICATION_CLASSES': ['ext.auth.ParamAuthentication', ] # 全局认证类不能写在views.py中，会造成循环引用
+'DEFAULT_AUTHENTICATION_CLASSES': [
+    'ext.auth.QueryParamsAuthentication',
+    'ext.auth.HeaderAuthentication',
+    'ext.auth.NotAuthentication',
+] # 全局认证类不能写在views.py中，会造成循环引用
 }
