@@ -29,7 +29,7 @@ class ParamAuthentication(BaseAuthentication):
             raise AuthenticationFailed({"code": 20000, "error": "认证失败"})
         return "welcome", token
 
-    def authenticate_header(self, request):
+    def authenticate_header(self, request): # 认证失败默认返回的头部信息
         return 'Token'
 
 class HeaderAuthentication(BaseAuthentication):
