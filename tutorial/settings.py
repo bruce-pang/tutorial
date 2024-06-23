@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'serializer_quik.apps.SerializerQuikConfig', # app of serializer_quik
     'quikstart.apps.QuikstartConfig', # app of quickstart
     'permission_demo.apps.PermissionDemoConfig', # app of permission_demo
+    'api.apps.ApiConfig', # app of api
 ]
 
 MIDDLEWARE = [
