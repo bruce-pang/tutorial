@@ -9,8 +9,8 @@ class Depart(models.Model):
 
 class User(models.Model):
     name = models.CharField(max_length=20)
-    age = models.IntegerField
+    age = models.IntegerField(verbose_name='年龄', default=18)
     gender = models.SmallIntegerField(verbose_name='性别', choices=((0, '男'), (1, '女')))
     depart = models.ForeignKey(verbose_name='部门',to='Depart', on_delete=models.CASCADE) # 外键关联， on_delete=models.CASCADE表示删除关联数据时，关联数据也删除
     createtime = models.DateTimeField(verbose_name='创建时间',auto_now_add=True) # 创建时间
-    updatetime = models.DateTimeField(verbose_name='更新时间',  default=timezone.now ) # 更新时间
+    updatetime = models.DateTimeField(verbose_name='更新时间',  default=timezone.now) # 更新时间

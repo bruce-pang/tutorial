@@ -17,7 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from api import  views
+from serializer_quik import views
 
 urlpatterns = [
-    path('home/<str:version>/', views.HomeView.as_view()),
+    # path('home/<str:version>/', views.HomeView.as_view()),
+    path('api/<str:version>/dept/', views.DepartView.as_view(), name='dept'),
+    path('api/<str:version>/user/', views.UserView.as_view(), name='user'),
 ]

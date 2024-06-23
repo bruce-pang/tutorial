@@ -21,14 +21,15 @@ class DepartSerializer(serializers.ModelSerializer): # 多字段建议使用Mode
         fields = "__all__"
 
 class UserSerializer(serializers.ModelSerializer):
-    createtime = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", read_only=True) # 只读字段
-    updatetime = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", read_only=True) # 只读字段
+    # ctime = serializers.DateTimeField(format="%Y-%m-%d", source="createtime")
+    #ctime = serializers.DateTimeField(format="%Y-%m-%d", source="updatetime")
     gender = serializers.CharField(source="get_gender_display") # 通过get_字段名_display()方法获取choices的值
+    depart = serializers.CharField(source="depart.title")
+    age = serializers.IntegerField()
     class Meta:
         model = User
-        fields = "__all__"
-        # todo: fix the bug : TypeError: Object of type type is not JSON serializable
-        #fields = ["name", "age", "gender", "createtime", "updatetime"] # 指定序列化的字段
+        # fields = "__all__" # 正常被序列化
+        fields = ["name", "age", "gender","depart", "createtime"] # 指定序列化的字段
 
 class DepartView(APIView):
     authentication_classes = []
