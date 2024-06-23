@@ -16,10 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from quikstart import views as quick_views
-from serializer_quik import views as serial_views
-from permission_demo import views as perm_views
+from api import  views
 
 urlpatterns = [
-
+    path('home/<str:version>/', views.HomeView.as_view()),
 ]

@@ -126,7 +126,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#DRF配置
+#DRF配置`
 REST_FRAMEWORK = {
 'UNAUTHENTICATED_USER': None, # 匿名用户默认为None， 不配置这个，又注释掉了Django的认证系统，就会报错
 'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -134,10 +134,13 @@ REST_FRAMEWORK = {
     'ext.auth.HeaderAuthentication',
     'ext.auth.NotAuthentication',
 ], # 全局认证类不能写在views.py中，会造成循环引用
-    'DEFAULT_PERMISSION_CLASSES':[
-        'ext.permission.UserPermission',
-        'ext.permission.ManagerPermission',
-        'ext.permission.BossPermission',
-        # 'ext.permission.MyPermission3',
-    ]
+    # 'DEFAULT_PERMISSION_CLASSES':[
+    #     'ext.permission.UserPermission',
+    #     'ext.permission.ManagerPermission',
+    #     'ext.permission.BossPermission',
+    #     # 'ext.permission.MyPermission3',
+    # ],
+    "VERSION_PARAM": "version", # 配置文件 VERSION_PARAM = "version" (如果不配置，默认为version)
+    "DEFAULT_VERSION": "v1", # 配置文件 DEFAULT_VERSION = "v1" (如果不配置，默认为None)
+    "ALLOWED_VERSIONS": ["v1", "v2"], # 配置文件 ALLOWED_VERSIONS = ["v1", "v2"] (如果不配置，默认为None)
 }
