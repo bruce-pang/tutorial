@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "rest_framework", # template/static of RDF
     'serializer_quik.apps.SerializerQuikConfig', # app of serializer_quik
     'quikstart.apps.QuikstartConfig', # app of quickstart
+    'permission_demo.apps.PermissionDemoConfig', # app of permission_demo
 ]
 
 MIDDLEWARE = [
@@ -131,5 +132,11 @@ REST_FRAMEWORK = {
     'ext.auth.QueryParamsAuthentication',
     'ext.auth.HeaderAuthentication',
     'ext.auth.NotAuthentication',
-] # 全局认证类不能写在views.py中，会造成循环引用
+], # 全局认证类不能写在views.py中，会造成循环引用
+    'DEFAULT_PERMISSION_CLASSES':[
+        'ext.permission.UserPermission',
+        'ext.permission.ManagerPermission',
+        'ext.permission.BossPermission',
+        # 'ext.permission.MyPermission3',
+    ]
 }

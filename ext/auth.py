@@ -1,6 +1,7 @@
 from rest_framework.authentication import BaseAuthentication
 from rest_framework.exceptions import AuthenticationFailed
-from quikstart.models import UserInfo
+# from quikstart.models import UserInfo
+from permission_demo.models import UserInfo
 
 class QueryParamsAuthentication(BaseAuthentication):
     def authenticate(self, request):

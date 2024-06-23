@@ -18,13 +18,18 @@ from django.contrib import admin
 from django.urls import path
 from quikstart import views as quick_views
 from serializer_quik import views as serial_views
+from permission_demo import views as perm_views
 
 urlpatterns = [
-    path('login/', quick_views.LoginView.as_view()),
-    path('user/', quick_views.UserView.as_view()),
-    path('order/', quick_views.OrderView.as_view()),
+    # path('login/', quick_views.LoginView.as_view()),
+    # path('user/', quick_views.UserView.as_view()),
+    # path('order/', quick_views.OrderView.as_view()),
 
     path('api/<str:version>/depart/', serial_views.DepartView.as_view(), name='depart'),
     path('api/<str:version>/user/', serial_views.UserView.as_view(), name='user'),
 
+    path('login/', perm_views.LoginView.as_view()),
+    path('user/', perm_views.UserView.as_view()),
+    path('order/', perm_views.OrderView.as_view()),
+    path('avatar/', perm_views.AvatarView.as_view()),
 ]
